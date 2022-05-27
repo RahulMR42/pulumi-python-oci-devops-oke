@@ -8,3 +8,5 @@ config:
   pulumi-python-oci-devops-oke:oci_containerrepo_public: "True"
   pulumi-python-oci-devops-oke:oci_devops_project_name: oci_pulumi_devops_project
   pulumi-python-oci-devops-oke:tag_version: v0.0
+  pulumi-python-oci-devops-oke:vcn_cidr_block: 10.0.0.0/16
+  pulumi-python-oci-devops-oke:vcn_display_name: pulumi_vcn
