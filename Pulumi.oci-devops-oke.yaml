@@ -1,0 +1,10 @@
+config:
+  oci:region: us-ashburn-1
+  pulumi-python-oci-devops-oke:app_name_prefix: mr_pulumi
+  pulumi-python-oci-devops-oke:compartment_ocid: ocid1.compartment.oc1..aaaaaaaalmc42p5bsqbfo5jkle7uy7bwnlazr7ghw26qorsidrwbl6mk6xva
+  pulumi-python-oci-devops-oke:notification_description: oci_pulumi_topic
+  pulumi-python-oci-devops-oke:notification_topic_name: topic_pulumi
+  pulumi-python-oci-devops-oke:oci_containerrepo_displayname: pulumi_oke_repo
+  pulumi-python-oci-devops-oke:oci_containerrepo_public: "True"
+  pulumi-python-oci-devops-oke:oci_devops_project_name: oci_pulumi_devops_project
+  pulumi-python-oci-devops-oke:tag_version: v0.0

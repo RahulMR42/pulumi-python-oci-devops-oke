@@ -4,8 +4,5 @@ runtime:
   options:
     virtualenv: venv
 description: A minimal Python Pulumi program
-config:
-  region:
-    description: The OCI Region to use
-    default: us-ashburn-1
+
 
