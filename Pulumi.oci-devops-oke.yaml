@@ -6,13 +6,14 @@ config:
   pulumi-python-oci-devops-oke:log_retention_in_days: "30"
   pulumi-python-oci-devops-oke:loggroup_description: sample log group
   pulumi-python-oci-devops-oke:loggroup_name: pulumi_log_group
-  pulumi-python-oci-devops-oke:natgateway_name: pulumi_natgateway
   pulumi-python-oci-devops-oke:notification_description: oci_pulumi_topic
   pulumi-python-oci-devops-oke:notification_topic_name: topic_pulumi
   pulumi-python-oci-devops-oke:oci_containerrepo_displayname: pulumi_oke_repo
   pulumi-python-oci-devops-oke:oci_containerrepo_public: "True"
   pulumi-python-oci-devops-oke:oci_devops_project_name: oci_pulumi_devops_project
-  pulumi-python-oci-devops-oke:servicegateway_name: pulumi_servicegateway
+  pulumi-python-oci-devops-oke:oke_cluster_name: pulumi-mr
+  pulumi-python-oci-devops-oke:oke_is_public_ip_enabled: "True"
   pulumi-python-oci-devops-oke:tag_version: v0.0
   pulumi-python-oci-devops-oke:vcn_cidr_block: 10.0.0.0/16
-  pulumi-python-oci-devops-oke:vcn_display_name: pulumi_vcn
+  pulumi-python-oci-devops-oke:vcn_display_name: pulumi_devops_vcn
+  pulumi-python-oci-devops-oke:vcn_dns_label: pulumidns

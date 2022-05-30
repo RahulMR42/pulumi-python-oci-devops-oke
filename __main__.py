@@ -3,6 +3,7 @@ from resources.common import  common_config
 from resources.artifact import  artifacts
 from resources.devops import devops
 from resources.notification import notification
+from resources.oke import oke
 from resources.network import network
 from resources.logs import logs
 from pulumi import Config
@@ -20,5 +21,6 @@ log_group = logs().create_log_group(config)
 devops_project = devops().create_devops_project(config,notification_topic)
 log = logs().create_logs(config,log_group,devops_project)
 vcn = network().create_vcn(config)
-service_gateway = network().create_service_gateway(config,vcn)
-nat_gateway = network().create_natgateway(config,vcn)
+# service_gateway = network().create_service_gateway(config,vcn)
+# nat_gateway = network().create_natgateway(config,vcn)
+oke_cluster = oke().create_cluster(config,vcn)
