@@ -2,6 +2,10 @@ config:
   oci:region: us-ashburn-1
   pulumi-python-oci-devops-oke:app_name_prefix: mr_pulumi
   pulumi-python-oci-devops-oke:compartment_ocid: ocid1.compartment.oc1..aaaaaaaalmc42p5bsqbfo5jkle7uy7bwnlazr7ghw26qorsidrwbl6mk6xva
+  pulumi-python-oci-devops-oke:log_name: pulumi_devops_logs
+  pulumi-python-oci-devops-oke:log_retention_in_days: "30"
+  pulumi-python-oci-devops-oke:loggroup_description: sample log group
+  pulumi-python-oci-devops-oke:loggroup_name: pulumi_log_group
   pulumi-python-oci-devops-oke:natgateway_name: pulumi_natgateway
   pulumi-python-oci-devops-oke:notification_description: oci_pulumi_topic
   pulumi-python-oci-devops-oke:notification_topic_name: topic_pulumi

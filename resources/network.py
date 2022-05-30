@@ -6,7 +6,7 @@ class network:
             test_vcn = oci.core.Vcn("testVcn",
                                     compartment_id=config.get('compartment_ocid'),
                                     cidr_block=config.get('vcn_cidr_block'),
-                                    display_name=config.get('vcn_display_name'),
+                                    display_name=f"{config.get('app_name_prefix')}_{config.get('vcn_display_name')}",
                                     )
             return  test_vcn
         except Exception as error:
