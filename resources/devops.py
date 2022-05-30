@@ -9,9 +9,7 @@ class devops:
                             name=config.get('oci_devops_project_name'),
                             notification_config=oci.devops.ProjectNotificationConfigArgs(
                                 topic_id=notification_topic.id,
-                            ),
-                            )
-
+                            ),)
         return  devops_project
 
 
