@@ -203,7 +203,7 @@ class network:
                                                            ),
                                                            oci.core.SecurityListEgressSecurityRuleArgs(
                                                                description="Allow nodes to communicate with OKE to ensure correct start-up and continued functioning",
-                                                               destination="all-services-in-oracle-services-network",
+                                                               destination=oci.core.get_services().services[1].cidr_block,
                                                                destination_type="SERVICE_CIDR_BLOCK",
                                                                protocol="6",
                                                                tcp_options=oci.core.SecurityListEgressSecurityRuleTcpOptionsArgs(

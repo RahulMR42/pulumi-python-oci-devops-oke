@@ -3,6 +3,7 @@ config:
   pulumi-python-oci-devops-oke:app_name_prefix: mr_pulumi
   pulumi-python-oci-devops-oke:compartment_ocid: ocid1.compartment.oc1..aaaaaaaalmc42p5bsqbfo5jkle7uy7bwnlazr7ghw26qorsidrwbl6mk6xva
   pulumi-python-oci-devops-oke:internetgateway_name: oke_internetgateway
+  pulumi-python-oci-devops-oke:kubernetes_version: v1.23.4
   pulumi-python-oci-devops-oke:log_name: pulumi_devops_logs
   pulumi-python-oci-devops-oke:log_retention_in_days: "30"
   pulumi-python-oci-devops-oke:loggroup_description: sample log group
@@ -20,10 +21,17 @@ config:
   pulumi-python-oci-devops-oke:oke_is_public_ip_enabled: "True"
   pulumi-python-oci-devops-oke:oke_lbsubnet_cidr: 10.0.20.0/24
   pulumi-python-oci-devops-oke:oke_lbsubnet_displayname: oke_svclb_subnet
+  pulumi-python-oci-devops-oke:oke_node_memory_in_gbs: "16"
+  pulumi-python-oci-devops-oke:oke_node_ocpus: "1"
+  pulumi-python-oci-devops-oke:oke_node_operating_system: Oracle Linux
   pulumi-python-oci-devops-oke:oke_node_routetable_displayname: oke_node_routetable
   pulumi-python-oci-devops-oke:oke_node_seclist_name: oke_node_seclist
+  pulumi-python-oci-devops-oke:oke_node_shape: VM.Standard.E4.Flex
+  pulumi-python-oci-devops-oke:oke_nodepool_name: oke_nodepool_1
+  pulumi-python-oci-devops-oke:oke_nodepool_node_count: "3"
   pulumi-python-oci-devops-oke:oke_nodesubnet_cidr: 10.0.10.0/24
   pulumi-python-oci-devops-oke:oke_nodesubnet_displayname: oke_node_subnet
+  pulumi-python-oci-devops-oke:oke_operating_system_version: "7.9"
   pulumi-python-oci-devops-oke:oke_svclb_routetable_displayname: oke_svclb_routetable
   pulumi-python-oci-devops-oke:oke_svclb_seclist_name: oke_svclb_seclist
   pulumi-python-oci-devops-oke:servicegateway_name: oke_servicegateway
