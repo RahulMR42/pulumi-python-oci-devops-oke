@@ -2,17 +2,31 @@ config:
   oci:region: us-ashburn-1
   pulumi-python-oci-devops-oke:app_name_prefix: mr_pulumi
   pulumi-python-oci-devops-oke:compartment_ocid: ocid1.compartment.oc1..aaaaaaaalmc42p5bsqbfo5jkle7uy7bwnlazr7ghw26qorsidrwbl6mk6xva
+  pulumi-python-oci-devops-oke:internetgateway_name: oke_internetgateway
   pulumi-python-oci-devops-oke:log_name: pulumi_devops_logs
   pulumi-python-oci-devops-oke:log_retention_in_days: "30"
   pulumi-python-oci-devops-oke:loggroup_description: sample log group
   pulumi-python-oci-devops-oke:loggroup_name: pulumi_log_group
+  pulumi-python-oci-devops-oke:natgateway_name: oke_natgateway
   pulumi-python-oci-devops-oke:notification_description: oci_pulumi_topic
   pulumi-python-oci-devops-oke:notification_topic_name: topic_pulumi
   pulumi-python-oci-devops-oke:oci_containerrepo_displayname: pulumi_oke_repo
   pulumi-python-oci-devops-oke:oci_containerrepo_public: "True"
   pulumi-python-oci-devops-oke:oci_devops_project_name: oci_pulumi_devops_project
+  pulumi-python-oci-devops-oke:oke_apiendpoint_seclist_name: oke_apiendpoint_seclist
+  pulumi-python-oci-devops-oke:oke_apisubnet_cidr: 10.0.0.0/28
+  pulumi-python-oci-devops-oke:oke_apisubnet_displayname: oke_apiendpoint_subnet
   pulumi-python-oci-devops-oke:oke_cluster_name: pulumi-mr
   pulumi-python-oci-devops-oke:oke_is_public_ip_enabled: "True"
+  pulumi-python-oci-devops-oke:oke_lbsubnet_cidr: 10.0.20.0/24
+  pulumi-python-oci-devops-oke:oke_lbsubnet_displayname: oke_svclb_subnet
+  pulumi-python-oci-devops-oke:oke_node_routetable_displayname: oke_node_routetable
+  pulumi-python-oci-devops-oke:oke_node_seclist_name: oke_node_seclist
+  pulumi-python-oci-devops-oke:oke_nodesubnet_cidr: 10.0.10.0/24
+  pulumi-python-oci-devops-oke:oke_nodesubnet_displayname: oke_node_subnet
+  pulumi-python-oci-devops-oke:oke_svclb_routetable_displayname: oke_svclb_routetable
+  pulumi-python-oci-devops-oke:oke_svclb_seclist_name: oke_svclb_seclist
+  pulumi-python-oci-devops-oke:servicegateway_name: oke_servicegateway
   pulumi-python-oci-devops-oke:tag_version: v0.0
   pulumi-python-oci-devops-oke:vcn_cidr_block: 10.0.0.0/16
   pulumi-python-oci-devops-oke:vcn_display_name: pulumi_devops_vcn

@@ -1,13 +1,13 @@
 import pulumi_oci as oci
 
 class oke:
-    def create_cluster(self,config,vcn):
+    def create_cluster(self,config,vcn,apiendpoint_subnet,lb_subnet):
         try:
             test_cluster = oci.containerengine.Cluster("test_cluster",
                                                         compartment_id=config.get('compartment_ocid'),
                                                         endpoint_config=oci.containerengine.ClusterEndpointConfigArgs(
                                                             is_public_ip_enabled=config.get('oke_is_public_ip_enabled'),
-                                                            subnet_id="ocid1.subnet.oc1.iad.aaaaaaaazirkqejixk4rncgbqfrtpybkzxb7kvtxqnarnf6qvtigjiceom7q",
+                                                            subnet_id=apiendpoint_subnet.id,
                                                         ),
                                                         name=config.get('oke_cluster_name'),
                                                        kubernetes_version="v1.23.4",
@@ -22,7 +22,7 @@ class oke:
                                                             service_lb_config=oci.containerengine.ClusterOptionsServiceLbConfigArgs(
 
                                                             ),
-                                                            service_lb_subnet_ids=["ocid1.subnet.oc1.iad.aaaaaaaag2sysjgzur7tnhwugf2r6rra6x4tabtti5gbvys7aijvj7dmp67a"],
+                                                            service_lb_subnet_ids=[lb_subnet.id],
                                                         ),vcn_id=vcn.id,)
             return  test_cluster
 
