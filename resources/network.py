@@ -3,7 +3,7 @@ import pulumi_oci as oci
 class network:
     def create_vcn(self,config):
         try:
-            test_vcn = oci.core.Vcn("test_vcn",
+            test_vcn = oci.core.Vcn("vcn",
                                     cidr_blocks=[config.get('vcn_cidr_block')],
                                     compartment_id=config.get('compartment_ocid'),
                                     display_name=config.get('vcn_display_name'),
@@ -17,7 +17,7 @@ class network:
 
     def create_natgateway(self,config,vcn):
         try:
-            nat_gateway = oci.core.NatGateway("test_nat_gateway",
+            nat_gateway = oci.core.NatGateway("nat_gateway",
                                                    compartment_id=config.get('compartment_ocid'),
                                                    display_name=config.get('natgateway_name'),
                                                    vcn_id=vcn.id,)
@@ -42,7 +42,7 @@ class network:
     def create_service_gateway(self,config,vcn):
         try:
 
-            service_gateway = oci.core.ServiceGateway("test_service_gateway",
+            service_gateway = oci.core.ServiceGateway("service_gateway",
                                                            compartment_id=config.get('compartment_ocid'),
                                                            display_name=config.get('servicegateway_name'),
                                                            services=[oci.core.ServiceGatewayServiceArgs(

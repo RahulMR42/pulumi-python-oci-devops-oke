@@ -3,3 +3,4 @@ venv/
 *.tfvars
 .idea**
 **test**
+**oci-devops-node**

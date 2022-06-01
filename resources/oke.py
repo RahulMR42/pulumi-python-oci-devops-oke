@@ -57,7 +57,6 @@ class oke:
                                                                 )],
                                                                 size=int(config.get('oke_nodepool_node_count')),
                                                             ),
-                                                            # node_image_id=node_image.__dict__['images'][0].get('id'),
                                                             node_shape=config.get('oke_node_shape'),
                                                             node_shape_config=oci.containerengine.NodePoolNodeShapeConfigArgs(
                                                                 memory_in_gbs=config.get('oke_node_memory_in_gbs'),
@@ -67,7 +66,7 @@ class oke:
                                                                 image_id=node_image.__dict__['images'][0].get('id'),
                                                                 source_type="IMAGE",
                                                             ),
-                                                            #subnet_ids=[node_subnet.id]
+
             )
             return oke_node_pool_1
         except Exception as error:
