@@ -4,3 +4,4 @@ venv/
 .idea**
 **test**
 **oci-devops-node**
+oci_pulumi_nodejs_local*

@@ -41,7 +41,9 @@ container_repository = artifacts().container_repo(config)
 oke_cluster = oke().create_cluster(config,vcn,apiendpoint_subnet,lb_subnet)
 oke_nodepool = oke().create_nodepool(config,oke_cluster,node_subnet)
 
-devops_project = devops().create_devops_project(config,notification_topic)
-devops_coderepo = devops().create_devops_coderepo(config,devops_project)
-clone_and_push_code = devops().clone_and_push_code(config,devops_coderepo,devops_project)
+devops_project = devops().create_devops_project(notification_topic)
+devops_coderepo = devops().create_devops_coderepo(devops_project)
+devops_coderepo.http_url.apply(lambda url : devops().clone_and_push_code(url))
+
 log = logs().create_logs(config,log_group,devops_project)
+
