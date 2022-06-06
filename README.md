@@ -8,6 +8,8 @@ Requirements
 
 Set the credentials 
 ----
+
+```markdown
 export TF_VAR_tenancy_ocid="ocid1.tenancy.xxx"
 export TF_VAR_user_ocid="ocid1.user.xxxx"
 export TF_VAR_fingerprint="xxxx"
@@ -15,6 +17,8 @@ export TF_VAR_region="xxx"
 export TF_VAR_private_key_file="xxx"
 export TF_VAR_oci_user="xxx"
 export TF_VAR_oci_user_password="xxxx"
+```
+
 
 Procedure
 ----
