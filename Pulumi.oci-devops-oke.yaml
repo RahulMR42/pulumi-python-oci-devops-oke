@@ -1,7 +1,35 @@
 config:
   oci:region: us-ashburn-1
   pulumi-python-oci-devops-oke:app_name_prefix: mr_devops
+  pulumi-python-oci-devops-oke:autobuild_run: "True"
+  pulumi-python-oci-devops-oke:build_spec_file: build_spec.yaml
+  pulumi-python-oci-devops-oke:buildstage_branchname: main
+  pulumi-python-oci-devops-oke:buildstage_connection_type: DEVOPS_CODE_REPOSITORY
+  pulumi-python-oci-devops-oke:buildstage_description: Build your application.
+  pulumi-python-oci-devops-oke:buildstage_displayname: appbuild_stage
+  pulumi-python-oci-devops-oke:buildstage_image: OL7_X86_64_STANDARD_10
+  pulumi-python-oci-devops-oke:buildstage_sourcename: node_express
+  pulumi-python-oci-devops-oke:buildstage_stagetype: BUILD
   pulumi-python-oci-devops-oke:compartment_ocid: ocid1.compartment.oc1..aaaaaaaalmc42p5bsqbfo5jkle7uy7bwnlazr7ghw26qorsidrwbl6mk6xva
+  pulumi-python-oci-devops-oke:containerartifact_argumentsubstitutionmode: SUBSTITUTE_PLACEHOLDERS
+  pulumi-python-oci-devops-oke:containerartifact_artifacttype: DOCKER_IMAGE
+  pulumi-python-oci-devops-oke:containerartifact_displayname: pulumi_devops_containerrepo_artifact
+  pulumi-python-oci-devops-oke:containerartifact_sourcetype: OCIR
+  pulumi-python-oci-devops-oke:deploy_artifact_source_type: INLINE
+  pulumi-python-oci-devops-oke:deploypipeline_description: Pipeline to deploy to OKE
+    using devops and pulumi
+  pulumi-python-oci-devops-oke:deploypipeline_displayname: pulumi_devops_deploypipeline
+  pulumi-python-oci-devops-oke:deploypipeline_param_defaultvalue: ns-node
+  pulumi-python-oci-devops-oke:deploypipeline_param_description: A namespace for the
+    deployment
+  pulumi-python-oci-devops-oke:deploypipeline_param_name: namespace
+  pulumi-python-oci-devops-oke:deploystage_oke_description: Apply manifest to oke
+  pulumi-python-oci-devops-oke:deploystage_oke_name: Deploy-To-Oke
+  pulumi-python-oci-devops-oke:deploystage_oke_rollbackpolicy: AUTOMATED_STAGE_ROLLBACK_POLICY
+  pulumi-python-oci-devops-oke:deploystage_oke_type: OKE_DEPLOYMENT
+  pulumi-python-oci-devops-oke:devop_buildpipeline_description: Build for pulumi devops
+    with oke
+  pulumi-python-oci-devops-oke:devop_buildpipeline_name: pulumi_devops_oke
   pulumi-python-oci-devops-oke:devops_coderepo_description: OCI Pulumi nodejs repo
   pulumi-python-oci-devops-oke:devops_coderepo_name: oci_pulumi_nodejs
   pulumi-python-oci-devops-oke:dg_description: Dynamic group to manage pulumi devops
@@ -10,6 +38,8 @@ config:
   pulumi-python-oci-devops-oke:github_clone_path: oci-devops-node-loc
   pulumi-python-oci-devops-oke:github_url: https://github.com/oracle-quickstart/oci-devops-node.git
   pulumi-python-oci-devops-oke:internetgateway_name: oke_internetgateway
+  pulumi-python-oci-devops-oke:kuberartifact_displayname: pulumi_devops_kubernetes_artifacts
+  pulumi-python-oci-devops-oke:kuberartifact_sourcetype: KUBERNETES_MANIFEST
   pulumi-python-oci-devops-oke:kubernetes_version: v1.23.4
   pulumi-python-oci-devops-oke:log_name: pulumi_devops_logs
   pulumi-python-oci-devops-oke:log_retention_in_days: "30"
@@ -47,6 +77,15 @@ config:
   pulumi-python-oci-devops-oke:policies_name: pulumi_devops_policies
   pulumi-python-oci-devops-oke:servicegateway_name: oke_servicegateway
   pulumi-python-oci-devops-oke:tag_version: v0.0
+  pulumi-python-oci-devops-oke:trigerdeployment_description: |
+    Trigger the deployment pipeline
+  pulumi-python-oci-devops-oke:trigerdeployment_name: trigger-deployment
+  pulumi-python-oci-devops-oke:trigerdeployment_parseparamenabled: "True"
+  pulumi-python-oci-devops-oke:trigerdeployment_stagetype: TRIGGER_DEPLOYMENT_PIPELINE
+  pulumi-python-oci-devops-oke:uploadartifact_description: Upload container image
+  pulumi-python-oci-devops-oke:uploadartifact_displayname: upload-artifact
+  pulumi-python-oci-devops-oke:uploadartifact_source: output01
+  pulumi-python-oci-devops-oke:uploadartifact_stagetype: DELIVER_ARTIFACT
   pulumi-python-oci-devops-oke:vcn_cidr_block: 10.0.0.0/16
   pulumi-python-oci-devops-oke:vcn_display_name: pulumi_devops_vcn
   pulumi-python-oci-devops-oke:vcn_dns_label: pulumidns
