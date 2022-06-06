@@ -1,5 +1,5 @@
 import os
-from resources.common import  common_config
+from resources.output import outputs
 from resources.artifact import  artifacts
 from resources.devops import devops
 from resources.notification import notification
@@ -51,10 +51,11 @@ container_repository = artifacts_object.container_repo(config)
 oke_object = oke()
 oke_cluster = oke_object.create_cluster(config,vcn,apiendpoint_subnet,lb_subnet)
 oke_nodepool = oke_object.create_nodepool(config,oke_cluster,node_subnet)
+oke_kubeconfig = oke_object.create_kubeconfig(config,oke_cluster)
 
 devops_object = devops()
 devops_project = devops_object.create_devops_project(notification_topic)
-artifact_containerrepo,oci_image_uri = devops_object.create_container_devops_artifact(config,devops_project)
+artifact_containerrepo,oci_image_uri,namespace = devops_object.create_container_devops_artifact(config,devops_project)
 artifact_kubernetes = devops_object.create_kubernetes_devops_artifact(config,devops_project,oci_image_uri)
 devops_coderepo = devops_object.create_devops_coderepo(devops_project)
 devops_coderepo.http_url.apply(lambda url : devops_object.clone_and_push_code(url))
@@ -62,9 +63,11 @@ log = log_object.create_logs(config,log_group,devops_project)
 deploy_oke_env = devops_object.create_deploy_env(devops_project,oke_cluster)
 devops_build_pipeline = devops_object.create_build_pipeline(config,devops_project)
 devops_deploy_pipeline = devops_object.create_deploy_pipeline(config,devops_project)
-build_stage_appbuild = devops_object.create_buildstage(config,devops_coderepo,devops_build_pipeline)
+build_stage_appbuild = devops_object.create_buildstage(config,devops_coderepo,devops_build_pipeline,namespace)
 uploadartifact_stage = devops_object.create_uploadartifact_stage(config,devops_build_pipeline,build_stage_appbuild,artifact_containerrepo)
 trigerdeployment_stage = devops_object.create_triggerdeploy_stage(config,uploadartifact_stage,devops_build_pipeline,devops_deploy_pipeline)
 devployment_stage_to_oke = devops_object.create_deployment_stage(config,devops_deploy_pipeline,artifact_kubernetes,deploy_oke_env)
 create_buildrun =devops_object.create_buildrun(config,devops_build_pipeline)
+
+outputs(config)
 

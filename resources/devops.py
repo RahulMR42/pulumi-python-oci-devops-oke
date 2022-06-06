@@ -83,7 +83,7 @@ class devops:
                                                                 deploy_artifact_type=config.require('containerartifact_artifacttype'),
                                                                 display_name=config.require('containerartifact_displayname'),
                                                                 project_id=devops_project.id)
-            return  artifact_containerrepo,oci_image_uri
+            return  artifact_containerrepo,oci_image_uri,namespace
 
 
         except Exception as error:
@@ -147,8 +147,10 @@ class devops:
         except Exception as error:
             print ("Deploypipeline creation failed" + str(error))
 
-    def create_buildstage(self,config,devops_coderepo,devops_build_pipeline):
+    def create_buildstage(self,config,devops_coderepo,devops_build_pipeline,namespace):
         try:
+            repository_url = f"https://devops.scmservice.{os.environ['TF_VAR_region']}.oci.oraclecloud.com/namespaces/" + \
+                             f"{namespace.namespace}/projects/{config.get('oci_devops_project_name')}_{self.random_string}/repositories/{config.get('devops_coderepo_name')}"
             build_stage_appbuild = oci.devops.BuildPipelineStage("build_stage_appbuild",
                                                                   build_pipeline_id=devops_build_pipeline.id,
                                                                   build_pipeline_stage_predecessor_collection=oci.devops.BuildPipelineStageBuildPipelineStagePredecessorCollectionArgs(
@@ -163,6 +165,7 @@ class devops:
                                                                           connection_type=config.require('buildstage_connection_type'),
                                                                           name=config.require('buildstage_sourcename'),
                                                                           repository_id=devops_coderepo.id,
+                                                                          repository_url=repository_url
                                                                      )],
                                                                   ),
                                                                   build_spec_file=config.require('build_spec_file'),
@@ -242,8 +245,7 @@ class devops:
 
     def create_buildrun(self,config,devops_build_pipeline):
         try:
-            if (config.require('autobuild_run') == True):
-                print("Starting build run ...")
+            if (config.require('autobuild_run') == "True"):
                 auto_buildrun = oci.devops.BuildRun("auto_buildrun",
                                                      build_pipeline_id=devops_build_pipeline.id,
                                                      build_run_arguments=oci.devops.BuildRunBuildRunArgumentsArgs(
@@ -252,11 +254,7 @@ class devops:
                                                              value="NA",
                                                          )],
                                                      ),
-                                                     commit_info=oci.devops.BuildRunCommitInfoArgs(
-                                                         commit_hash="",
-                                                         repository_branch="",
-                                                         repository_url="",
-                                                     ),
+
                                                      display_name=f"buildrun-ocidevops-with-pulumi-{self.random_string}")
                 return  auto_buildrun
 

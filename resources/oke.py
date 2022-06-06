@@ -1,5 +1,8 @@
 import os
+import pulumi
 import pulumi_oci as oci
+from pathlib import Path
+
 
 class oke:
     def create_cluster(self,config,vcn,apiendpoint_subnet,lb_subnet):
@@ -71,5 +74,16 @@ class oke:
             return oke_node_pool_1
         except Exception as error:
             print("Node pool creation failed " + str(error))
+
+    def create_kubeconfig(self,config,oke_cluster):
+        try:
+            cluster_kube_config = oci.containerengine.get_cluster_kube_config(cluster_id=oke_cluster.id)
+            Path("generated").mkdir( exist_ok=True)
+            file = open('generated/kubeconfig','w+')
+            file.write(cluster_kube_config.content)
+            file.close()
+            return cluster_kube_config
+        except Exception as error:
+            print("Kubeconfig export is failed" + str(error))
 
 
